@@ -1,0 +1,6 @@
+<div class="item-card" appHighlight>
+  <h3>{{ employee.name | capitalize }}</h3>
+  <p><strong>Puesto:</strong> {{ employee.role }}</p>
+  <button pButton label="Editar" icon="pi pi-pencil" (click)="onEdit()"></button>
+  <button pButton label="Eliminar" icon="pi pi-trash" class="p-button-danger" (click)="onDelete()"></button>
+</div>

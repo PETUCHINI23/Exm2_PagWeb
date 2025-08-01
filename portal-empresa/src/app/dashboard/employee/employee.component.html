@@ -1,0 +1,40 @@
+<p-button label="Agregar Empleado" icon="pi pi-plus" (onClick)="openNew()" class="mb-3"></p-button>
+
+<p-table [value]="employees">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-emp>
+    <tr>
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.role }}</td>
+      <td>
+        <p-button icon="pi pi-pencil" class="p-button-rounded p-button-warning me-2" (onClick)="edit(emp)"></p-button>
+        <p-button icon="pi pi-trash" class="p-button-rounded p-button-danger" (onClick)="delete(emp.id)"></p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog header="{{ isEdit ? 'Editar' : 'Agregar' }} Empleado" [(visible)]="showDialog" [modal]="true" [closable]="false">
+  <div class="p-fluid">
+    <div class="field">
+      <label for="name">Nombre</label>
+      <input id="name" type="text" pInputText [(ngModel)]="name" />
+    </div>
+    <div class="field">
+      <label for="role">Rol</label>
+      <input id="role" type="text" pInputText [(ngModel)]="role" />
+    </div>
+  </div>
+  <p-footer>
+    <p-button label="Guardar" icon="pi pi-check" (onClick)="save()" class="p-button-success"></p-button>
+    <p-button label="Cancelar" icon="pi pi-times" (onClick)="showDialog = false" class="p-button-secondary"></p-button>
+  </p-footer>
+</p-dialog>

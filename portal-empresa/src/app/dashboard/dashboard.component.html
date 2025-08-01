@@ -1,0 +1,10 @@
+<div class="dashboard-container">
+  <h2>Bienvenido al panel de empleados</h2>
+  <button (click)="logout()">Cerrar sesión</button>
+</div>
+<app-item-card
+  *ngFor="let emp of employees"
+  [employee]="emp"
+  (edit)="editEmployee(emp)"
+  (delete)="deleteEmployee(emp.id)">
+</app-item-card>
